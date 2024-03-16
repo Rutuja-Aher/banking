@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfer Money</title>
+</head>
+<body>
+    <p>Transfer Money</p>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="from_account">From Account:</label>
+        <select name="from_account" id="from_account" required>
+            <option value="">Select Name</option>
+            {% for customer_name in customer_names %}
+                <option value="{{ customer_name }}">{{ customer_name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="to_account">To Account:</label>
+        <select name="to_account" id="to_account" required>
+            <option value="">Select Name</option>
+            {% for customer_name in customer_names %}
+                <option value="{{ customer_name }}">{{ customer_name }}</option>
+            {% endfor %}
+        </select>        
+        <br>
+        <label for="amount">Enter Amount:</label>
+        <input type="number" id="amount" name="amount" required>
+        <br>
+       <input type="submit" value="Transfer">
+    </form>
+</body>
+</html>
